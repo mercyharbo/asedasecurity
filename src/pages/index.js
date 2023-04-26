@@ -87,8 +87,9 @@ export default function Home() {
       </Head>
       <main className='flex flex-col'>
         <nav
-          className='flex justify-between items-center rounded-lg lg:px-14 lg:h-[60px] lg:w-[80%] lg:my-8 lg:left-[8rem] md:w-[80%] md:my-5 md:h-[70px] 
-          md:left-[5rem] sm:px-5 sm:h-[80px] sm:w-full sm: xs:w-full xs:h-[70px] xs:px-5 xs:my-0 xs:left-0 xs:shadow-2xl mx-auto fixed top-0 z-10 bg-[#f7f5f5e1]  '
+          className='flex justify-between items-center lg:rounded-lg lg:px-14 lg:h-[60px] lg:w-[80%] lg:my-8 lg:left-[8rem] md:w-[80%] md:my-5 md:h-[70px] 
+          md:left-[5rem] md:rounded-lg sm:px-5 sm:h-[80px] sm:w-full sm:rounded-none xs:w-full xs:h-[70px] xs:px-5 xs:my-0 xs:left-0 xs:shadow-2xl xs:rounded-none 
+          mx-auto fixed top-0 z-10 bg-[#f7f5f5e1]  '
         >
           <Link href='' onClick={handleRefresh}>
             <Image

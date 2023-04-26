@@ -17,11 +17,11 @@ export default function Slides({ images }) {
       }}
       navigation={true}
       modules={[Autoplay, Pagination, Navigation]}
-      className='w-full'
+      className='w-full lg:mt-0 md:mt-0 sm:mt-[70px] xs:mt-[70px]'
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
-          <div className=' lg:h-[700px] md:h-[700px] sm:h-[500px] xs:h-[400px] '>
+          <div className=' lg:h-[700px] md:h-[700px] sm:h-[300px] xs:h-[300px] '>
             <Image
               src={image.url}
               alt={image.alt}
