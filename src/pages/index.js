@@ -1,22 +1,13 @@
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FaBars } from 'react-icons/fa'
-import { useEffect, useRef, useState } from 'react'
+import { FaBars, FaUserCheck, FaUserShield } from 'react-icons/fa'
+import { GiCctvCamera } from 'react-icons/gi'
+import { TbTruckDelivery } from 'react-icons/tb'
 import { AnimatePresence, motion } from 'framer-motion'
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, Navigation } from 'swiper'
-
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
 import Slides from '@/components/slides'
-
-const inter = Inter({ subsets: ['latin'] })
 
 const images = [
   {
@@ -151,6 +142,54 @@ export default function Home() {
         )}
 
         <Slides images={images} />
+
+        <section
+          className='lg:absolute bg-[#2476f2f3] lg:rounded-lg grid lg:grid-cols-4 text-center lg:gap-10 lg:bottom-[12rem] lg:w-[80%] lg:left-[10rem] lg:py-8 
+        lg:px-10 md:grid-cols-2 md:gap-10 md:py-8 md:w-[90%] md:absolute md:bottom-[12rem] md:left-9 md:rounded-lg sm:w-full sm:-bottom-[10rem] sm:px-5
+        sm:py-5 sm:grid-cols-1 sm:gap-8 sm:place-items-center xs:w-full xs:left-0 xs:-bottom-[10rem] xs:px-5 xs:py-5 xs:grid-cols-1 xs:gap-8 xs:place-items-center 
+        mx-auto z-20 '
+        >
+          <div className='flex flex-col justify-center items-center gap-2'>
+            <GiCctvCamera size={50} color='white' />
+            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
+              CCTV
+            </h2>
+            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
+              Our top priority is ensuring your safety and earning your trust.
+            </span>
+          </div>
+
+          <div className='flex flex-col justify-center items-center gap-2'>
+            <FaUserShield size={50} color='white' />
+            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
+              ESCORT/VIP PROTECTION
+            </h2>
+            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
+              We provide a specialist elite force of executive protection and
+              escorting to your destination.
+            </span>
+          </div>
+
+          <div className='flex flex-col justify-center items-center gap-2'>
+            <TbTruckDelivery size={50} color='white' />
+            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
+              LOGISTIC
+            </h2>
+            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
+              Your capacity and our capability, your destination is sure!
+            </span>
+          </div>
+
+          <div className='flex flex-col justify-center items-center gap-2'>
+            <FaUserCheck size={50} color='white' />
+            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
+              STAFF VERIFICATION
+            </h2>
+            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
+              Our background screening helps to confirm basic identity.
+            </span>
+          </div>
+        </section>
       </main>
     </>
   )
