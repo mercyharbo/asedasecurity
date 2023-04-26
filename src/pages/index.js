@@ -1,118 +1,156 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { FaBars } from 'react-icons/fa'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination, Navigation } from 'swiper'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import Slides from '@/components/slides'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const images = [
+  {
+    url: '/guard1.jpg',
+    alt: 'Image 1',
+    title: 'ESCORT/VIP PROTECTION',
+    caption:
+      'We provide a specialist elite force of executive protection and escorting to your destination',
+  },
+  {
+    url: '/guard2.jpg',
+    alt: 'Image 2',
+    title: 'LOGISTICS',
+    caption: 'Your capacity and our capability, your destination is sure!',
+  },
+  {
+    url: '/guard3.jpg',
+    alt: 'Image 3',
+    title: 'STAFF VERIFICATION',
+    caption: 'Our background screening helps to confirm basic identity',
+  },
+]
+
 export default function Home() {
+  const navRef = useRef()
+  const router = useRouter()
+  const [toggleNav, setToggleNav] = useState(false)
+
+  function handleRefresh() {
+    router.reload()
+  }
+
+  const toggleNavVariants = {
+    open: {
+      opacity: 1,
+      transition: { duration: 0.3 },
+    },
+    closed: {
+      opacity: 0,
+      transition: { duration: 0.3 },
+    },
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setToggleNav(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [navRef])
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <>
+      <Head>
+        <title>Home | Aseda Security Limited </title>
+        <meta
+          name='description'
+          content='Aseda Security Limited is a multiservice and innovative company that is committed to providing innovative security and logistics solutions 
+          to its clients. We pride ourselves in providing a full range of security management services and continually improve on our mantra of quality service, 
+          integrity, excellence and professionalism.'
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+      </Head>
+      <main className='flex flex-col'>
+        <nav
+          className='flex justify-between items-center rounded-lg lg:px-14 lg:h-[60px] lg:w-[80%] lg:my-8 lg:left-[8rem] md:w-[80%] md:my-5 md:h-[70px] 
+          md:left-[5rem] sm:px-5 sm:h-[80px] sm:w-full sm: xs:w-full xs:h-[70px] xs:px-5 xs:my-0 xs:left-0 xs:shadow-2xl mx-auto fixed top-0 z-10 bg-[#f7f5f5e1]  '
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <Link href='' onClick={handleRefresh}>
+            <Image
+              src={'/logo.png'}
+              alt='aseda logo'
+              width={200}
+              height={200}
+              quality={100}
+              className='lg:w-[200px] md:w-[150px] sm:w-[110px] xs:w-[110px] '
+            />
+          </Link>
+          <div
+            className='lg:flex lg:justify-center lg:items-center lg:gap-8 md:flex md:justify-center md:items-center md:gap-5 sm:hidden xs:hidden capitalize 
+          font-medium '
+          >
+            <Link href='#home'>home </Link>
+            <Link href='#about'>about us</Link>
+            <Link href='#services'>our services</Link>
+            <Link href='#contact'>contact</Link>
+          </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <button
+            onClick={() => setToggleNav(true)}
+            className='hamburger lg:hidden md:hidden sm:flex '
+          >
+            <FaBars size={30} />
+          </button>
+        </nav>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+        {toggleNav && (
+          <AnimatePresence>
+            <motion.nav
+              initial='closed'
+              animate='open'
+              exit='closed'
+              variants={toggleNavVariants}
+              ref={navRef}
+              className='flex flex-col justify-center items-center gap-5 absolute left-0 top-0 z-10 bg-white w-full h-auto py-5 rounded-lg shadow-2xl capitalize'
+            >
+              <Link href='' onClick={handleRefresh}>
+                <Image
+                  src={'/logo.png'}
+                  alt='aseda logo'
+                  width={200}
+                  height={200}
+                  quality={100}
+                  className='lg:w-[200px] md:w-[150px] sm:w-[110px] xs:w-[110px] '
+                />
+              </Link>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+              <div className='flex flex-col justify-center items-center gap-7 font-medium pt-5'>
+                <Link href='#home'>home </Link>
+                <Link href='#about'>about us</Link>
+                <Link href='#services'>our services</Link>
+                <Link href='#contact'>contact</Link>
+              </div>
+            </motion.nav>
+          </AnimatePresence>
+        )}
+
+        <Slides images={images} />
+      </main>
+    </>
   )
 }
