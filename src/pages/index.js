@@ -3,11 +3,14 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { AnimatePresence, motion } from 'framer-motion'
+
 import { FaBars, FaUserCheck, FaUserShield } from 'react-icons/fa'
 import { GiCctvCamera } from 'react-icons/gi'
 import { TbTruckDelivery } from 'react-icons/tb'
-import { AnimatePresence, motion } from 'framer-motion'
+
 import Slides from '@/components/slides'
+import { Link as ScrollLink } from 'react-scroll'
 
 const images = [
   {
@@ -48,6 +51,21 @@ export default function Home() {
     closed: {
       opacity: 0,
       transition: { duration: 0.3 },
+    },
+  }
+
+  const sectionVariants = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.6, -0.05, 0.01, 0.99],
+      },
     },
   }
 
@@ -94,12 +112,48 @@ export default function Home() {
           </Link>
           <div
             className='lg:flex lg:justify-center lg:items-center lg:gap-8 md:flex md:justify-center md:items-center md:gap-5 sm:hidden xs:hidden capitalize 
-          font-medium '
+          font-medium cursor-pointer '
           >
-            <Link href='#home'>home </Link>
-            <Link href='#about'>about us</Link>
-            <Link href='#services'>our services</Link>
-            <Link href='#contact'>contact</Link>
+            <ScrollLink
+              activeClass='active'
+              to='home'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              home{' '}
+            </ScrollLink>
+            <ScrollLink
+              activeClass='active'
+              to='about'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              about{' '}
+            </ScrollLink>
+            <ScrollLink
+              activeClass='active'
+              to='services'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              our services{' '}
+            </ScrollLink>
+            <ScrollLink
+              activeClass='active'
+              to='contact'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              contact{' '}
+            </ScrollLink>
           </div>
 
           <button
@@ -132,10 +186,46 @@ export default function Home() {
               </Link>
 
               <div className='flex flex-col justify-center items-center gap-7 font-medium pt-5'>
-                <Link href='#home'>home </Link>
-                <Link href='#about'>about us</Link>
-                <Link href='#services'>our services</Link>
-                <Link href='#contact'>contact</Link>
+                <ScrollLink
+                  activeClass='active'
+                  to='home'
+                  spy={true}
+                  smooth={true}
+                  offset={-70} // Change this value to adjust the offset if needed
+                  duration={500}
+                >
+                  home{' '}
+                </ScrollLink>
+                <ScrollLink
+                  activeClass='active'
+                  to='about'
+                  spy={true}
+                  smooth={true}
+                  offset={-70} // Change this value to adjust the offset if needed
+                  duration={500}
+                >
+                  about{' '}
+                </ScrollLink>
+                <ScrollLink
+                  activeClass='active'
+                  to='services'
+                  spy={true}
+                  smooth={true}
+                  offset={-70} // Change this value to adjust the offset if needed
+                  duration={500}
+                >
+                  our services{' '}
+                </ScrollLink>
+                <ScrollLink
+                  activeClass='active'
+                  to='contact'
+                  spy={true}
+                  smooth={true}
+                  offset={-70} // Change this value to adjust the offset if needed
+                  duration={500}
+                >
+                  contact{' '}
+                </ScrollLink>
               </div>
             </motion.nav>
           </AnimatePresence>
@@ -144,50 +234,59 @@ export default function Home() {
         <Slides images={images} />
 
         <section
-          className='lg:absolute bg-[#2476f2f3] lg:rounded-lg grid lg:grid-cols-4 text-center lg:gap-10 lg:bottom-[12rem] lg:w-[80%] lg:left-[10rem] lg:py-8 
-        lg:px-10 md:grid-cols-2 md:gap-10 md:py-8 md:w-[90%] md:absolute md:bottom-[12rem] md:left-9 md:rounded-lg sm:w-full sm:-bottom-[10rem] sm:px-5
-        sm:py-5 sm:grid-cols-1 sm:gap-8 sm:place-items-center xs:w-full xs:left-0 xs:-bottom-[10rem] xs:px-5 xs:py-5 xs:grid-cols-1 xs:gap-8 xs:place-items-center 
-        mx-auto z-20 '
+          id='about'
+          className='grid lg:grid-cols-2 lg:gap-5 lg:px-0 lg:mt-[12rem] lg:mb-20 lg:w-[80%] md:mt-[13rem] md:grid-cols-2 md:gap-5 sm:mt-10 sm:px-5 sm:gap-5
+          sm:mb-14 xs:mt-10 xs:px-5 xs:gap-5 xs:mb-14 mx-auto '
         >
-          <div className='flex flex-col justify-center items-center gap-2'>
-            <GiCctvCamera size={50} color='white' />
-            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
-              CCTV
-            </h2>
-            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
-              Our top priority is ensuring your safety and earning your trust.
-            </span>
+          <div className='grid grid-cols-2 gap-4'>
+            <div className='col-span-2 lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-1 xs:row-auto xs:col-span-1 rounded-lg bg-[#2476f2f3] text-white flex justify-start items-end p-5 '>
+              <h1 className='lg:text-3xl md:text-2xl sm:text-lg xs:text-lg capitalize font-semibold w-9'>
+                about us
+              </h1>
+            </div>
+            <div className='hidden lg:block lg:col-span-1 md:hidden sm:hidden xs:block rounded-lg'>
+              <Image
+                src={'/cab.jpg'}
+                alt='aseda security'
+                width={500}
+                height={500}
+                className='rounded-lg w-full'
+              />
+            </div>
+            <div className='col-span-2 lg:col-span-1 lg:block md:block md:col-span-2 sm:hidden xs:hidden rounded-lg'>
+              <Image
+                src={'/asedamen.jpg'}
+                alt='aseda security'
+                width={500}
+                height={500}
+                className='rounded-lg w-full '
+              />
+            </div>
           </div>
 
-          <div className='flex flex-col justify-center items-center gap-2'>
-            <FaUserShield size={50} color='white' />
-            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
-              ESCORT/VIP PROTECTION
-            </h2>
-            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
-              We provide a specialist elite force of executive protection and
-              escorting to your destination.
-            </span>
-          </div>
+          <div className='flex flex-col justify-start items-start lg:gap-5 xs:gap-4 '>
+            <h1 className='font-semibold capitalize lg:text-4xl md:text-4xl sm:text-2xl xs:text-2xl'>
+              Aseda security limited
+            </h1>
+            <p className='lg:text-lg lg:w-[85%] md:text-lg md:w-full sm:w-full xs:w-full xs:text-base '>
+              Aseda Security Limited is a multi-service and innovative company
+              committed to providing innovative security and logistics solutions
+              to its clients. We pride ourselves in offering a full range of
+              security management services and continually strive to improve our
+              quality of service, integrity, excellence, and professionalism. As
+              a company dedicated to excellence and professionalism, we maintain
+              the highest industry standards for our staff's training, loyalty,
+              and character.
+            </p>
 
-          <div className='flex flex-col justify-center items-center gap-2'>
-            <TbTruckDelivery size={50} color='white' />
-            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
-              LOGISTIC
-            </h2>
-            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
-              Your capacity and our capability, your destination is sure!
-            </span>
-          </div>
-
-          <div className='flex flex-col justify-center items-center gap-2'>
-            <FaUserCheck size={50} color='white' />
-            <h2 className='text-white font-bold lg:text-xl md:text-lg sm:text-md xs:text-md'>
-              STAFF VERIFICATION
-            </h2>
-            <span className='text-white lg:text-base md:text-base sm:text-sm xs:text-[12px]'>
-              Our background screening helps to confirm basic identity.
-            </span>
+            <Link
+              href={'#contact'}
+              className='capitalize bg-[#2476f2f3] h-[40px] w-[130px] flex justify-center items-center text-white font-medium rounded-lg hover:bg-[#dededebd] 
+              hover:text-black shadow-2xl '
+            >
+              {' '}
+              contact us
+            </Link>
           </div>
         </section>
       </main>
