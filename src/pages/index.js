@@ -329,7 +329,7 @@ export default function Home() {
                 </h1>
                 <p className='text-base text=[#404258]'>
                   At our security company, we understand the importance of
-                  having a safe and secure environment, whether it's at a
+                  having a safe and secure environment, whether it&apos;s at a
                   private event, nightclub, or other public gathering. This is
                   why we offer professional bouncer services to ensure that your
                   safety and security is our top priority.
