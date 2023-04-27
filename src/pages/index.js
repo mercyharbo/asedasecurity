@@ -275,8 +275,8 @@ export default function Home() {
               security management services and continually strive to improve our
               quality of service, integrity, excellence, and professionalism. As
               a company dedicated to excellence and professionalism, we maintain
-              the highest industry standards for our staff's training, loyalty,
-              and character.
+              the highest industry standards for our staff&apos;s training,
+              loyalty, and character.
             </p>
 
             <Link
