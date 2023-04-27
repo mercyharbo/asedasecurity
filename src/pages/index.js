@@ -4,13 +4,19 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Link as ScrollLink } from 'react-scroll'
 
-import { FaBars, FaUserCheck, FaUserShield } from 'react-icons/fa'
-import { GiCctvCamera } from 'react-icons/gi'
-import { TbTruckDelivery } from 'react-icons/tb'
+import {
+  FaBars,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaLocationArrow,
+  FaSearchLocation,
+} from 'react-icons/fa'
 
 import Slides from '@/components/slides'
-import { Link as ScrollLink } from 'react-scroll'
+import { TbCurrentLocation, TbLocation, TbMail, TbPhone } from 'react-icons/tb'
 
 const images = [
   {
@@ -54,21 +60,6 @@ export default function Home() {
     },
   }
 
-  const sectionVariants = {
-    initial: {
-      opacity: 0,
-      y: 50,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99],
-      },
-    },
-  }
-
   useEffect(() => {
     function handleClickOutside(event) {
       if (navRef.current && !navRef.current.contains(event.target)) {
@@ -96,9 +87,9 @@ export default function Home() {
       </Head>
       <main className='flex flex-col'>
         <nav
-          className='flex justify-between items-center lg:rounded-lg lg:px-14 lg:h-[60px] lg:w-[80%] lg:my-8 lg:left-[8rem] md:w-[80%] md:my-5 md:h-[70px] 
-          md:left-[5rem] md:rounded-lg sm:px-5 sm:h-[80px] sm:w-full sm:rounded-none xs:w-full xs:h-[70px] xs:px-5 xs:my-0 xs:left-0 xs:shadow-2xl xs:rounded-none 
-          mx-auto fixed top-0 z-10 bg-[#f7f5f5e1]  '
+          className='flex justify-between items-center lg:rounded-lg lg:px-14 lg:h-[60px] lg:w-[80%] lg:my-8 lg:left-[10rem] md:w-[80%] md:my-5 md:h-[70px] 
+          md:left-[5rem] md:rounded-lg sm:px-5 sm:h-[80px] sm:w-full sm:rounded-none xs:w-full xs:h-[70px] xs:px-5 xs:my-0 xs:left-0 xs:rounded-none 
+          mx-auto fixed top-0 z-10 bg-white shadow-2xl  '
         >
           <Link href='' onClick={handleRefresh}>
             <Image
@@ -235,7 +226,7 @@ export default function Home() {
 
         <section
           id='about'
-          className='grid lg:grid-cols-2 lg:gap-5 lg:px-0 lg:mt-[12rem] lg:mb-20 lg:w-[80%] md:mt-[13rem] md:grid-cols-2 md:gap-5 sm:mt-10 sm:px-5 sm:gap-5
+          className='grid lg:grid-cols-2 lg:gap-5 lg:px-3 lg:mt-[12rem] lg:mb-20 lg:w-[80%] md:mt-[13rem] md:grid-cols-2 md:gap-5 sm:mt-10 sm:px-5 sm:gap-5
           sm:mb-14 xs:mt-10 xs:px-5 xs:gap-5 xs:mb-14 mx-auto '
         >
           <div className='grid grid-cols-2 gap-4'>
@@ -289,6 +280,226 @@ export default function Home() {
             </Link>
           </div>
         </section>
+
+        <section id='services' className='bg-[#F7F7F7] py-8 '>
+          <h1
+            className='font-semibold capitalize flex justify-center items-center relative after:absolute after:w-[50px] after:h-[20px] after:border-b-4 
+          lg:after:top-6 md:after:top-5 sm:after:top-5 xs:after:top-5 after:border-[#2476f2f3] lg:text-3xl md:text-2xl sm:text-2xl xs:text-2xl '
+          >
+            {' '}
+            our services{' '}
+          </h1>
+          <section
+            className='mx-auto flex lg:flex-row lg:justify-center lg:items-start lg:gap-5 lg:px-0 lg:py-8 lg:w-[80%] md:flex-col md:justify-center 
+          md:items-center md:gap-5 md:px-5 md:py-8 sm:flex-col sm:justify-center sm:items-center sm:gap-5 sm:px-5 sm:py-7 xs:flex-col xs:justify-center
+          xs:items-center xs:px-5 xs:gap-5 xs:py-7'
+          >
+            <div className='flex flex-col justify-start items-start bg-white shadow-2xl rounded-xl lg:w-[30%] lg:h-[550px] md:w-full md:h-[auto] flex-grow-0'>
+              <Image
+                src={'/driver.jpg'}
+                alt='cab'
+                width={300}
+                height={300}
+                className='w-full lg:h-[300px] rounded-t-xl'
+              />
+              <div className='flex flex-col gap-3 p-5'>
+                <h1 className='lg:text-2xl md:text-2xl sm:text-2xl xs:text-2xl font-medium'>
+                  Drivers
+                </h1>
+                <p className='text-base text=[#404258]'>
+                  Our security company offers professional and reliable driver
+                  services for both individuals and businesses. We believe that
+                  a comfortable and safe journey is paramount, which is why we
+                  have carefully selected and trained our navigation experts to
+                  provide the best possible driving experience.
+                </p>
+              </div>
+            </div>
+            <div className='flex flex-col justify-start items-start bg-white shadow-2xl rounded-xl lg:w-[30%] lg:h-[550px] md:w-full md:h-[auto] flex-grow-0'>
+              <Image
+                src={'/asedamen.jpg'}
+                alt='cab'
+                width={300}
+                height={300}
+                className='w-full lg:h-[300px] rounded-t-xl'
+              />
+              <div className='flex flex-col gap-3 p-5'>
+                <h1 className='lg:text-2xl md:text-2xl sm:text-2xl xs:text-2xl font-medium'>
+                  Bouncers
+                </h1>
+                <p className='text-base text=[#404258]'>
+                  At our security company, we understand the importance of
+                  having a safe and secure environment, whether it's at a
+                  private event, nightclub, or other public gathering. This is
+                  why we offer professional bouncer services to ensure that your
+                  safety and security is our top priority.
+                </p>
+              </div>
+            </div>
+
+            <div className='flex flex-col justify-start items-start bg-white shadow-2xl rounded-xl lg:w-[30%] lg:h-[550px] md:w-full md:h-[auto] flex-grow-0'>
+              <Image
+                src={'/cab.jpg'}
+                alt='cab'
+                width={300}
+                height={300}
+                className='w-full lg:h-[300px] rounded-t-xl '
+              />
+              <div className='flex flex-col gap-3 p-5'>
+                <h1 className='lg:text-2xl md:text-2xl sm:text-2xl xs:text-2xl font-medium '>
+                  Vechicles for trips and hangouts
+                </h1>
+                <p className='text-base text=[#404258] '>
+                  We understand that every hangout or trip is unique, and we
+                  work closely with our clients to develop a customized
+                  transportation plan that meets their specific needs. Whether
+                  you need a ride to a concert, sporting event, or just a fun
+                  night out with friends, we have got you covered.
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section id='contact' className='flex flex-col gap-5 py-8'>
+          <h1
+            className='font-semibold capitalize flex justify-center items-center relative after:absolute after:w-[50px] after:h-[20px] after:border-b-4 
+          after:top-6 after:border-[#2476f2f3] lg:text-3xl md:text-3xl sm:text-2xl xs:text-2xl '
+          >
+            {' '}
+            contact{' '}
+          </h1>
+          <div className='flex lg:gap-10 lg:w-[80%] lg:py-7 lg:flex-row md:gap-7 md:flex-row md:py-5 sm:flex-col sm:gap-5 xs:flex-col xs:gap-5 mx-auto  '>
+            <div
+              className=' rounded-lg bg-[#2476f2f3] text-white flex justify-start items-end p-3 lg:w-[250px] lg:h-[250px] md:w-[200px] md:h-[200px] sm:w-full
+            sm:h-[150px] xs:w-full xs:h-[150px] '
+            >
+              <h1 className='lg:text-3xl md:text-2xl sm:text-2xl xs:text-2xl capitalize font-semibold w-9 '>
+                contact
+              </h1>
+            </div>
+
+            <div className='flex flex-col justify-start items-start lg:gap-5 md:gap-4 sm:gap-3 xs:gap-3'>
+              <div className='flex gap-2 items-center'>
+                <span className='flex items-center'>
+                  <TbPhone size={20} />
+                  :-
+                </span>
+                <a
+                  href='tel:+2348020304461'
+                  className='text-[#2476f2f3] font-medium '
+                >
+                  +2348020304461,
+                </a>
+                <a
+                  href='tel:+2349160164971'
+                  className='text-[#2476f2f3] font-medium '
+                >
+                  +2349160164971
+                </a>
+              </div>
+
+              <div className='flex gap-2 items-center'>
+                <span className='flex items-center'>
+                  <TbMail size={20} />
+                  :-
+                </span>
+                <a
+                  href='mailto:asedasecure@gmail.com'
+                  className='text-[#2476f2f3] font-medium '
+                >
+                  asedasecure@gmail.com
+                </a>
+              </div>
+
+              <div className='flex gap-2 items-center'>
+                <span className='flex items-center'>
+                  <FaLocationArrow size={20} />
+                  :-
+                </span>
+                <span className='text-[#2476f2f3] font-medium '>
+                  17/19 Oshopey plaza Allen, 5th floor
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer
+          className='flex bg-[#F7F7F7] lg:flex-row lg:justify-between lg:items-center lg:py-8 lg:px-10 md:flex-row md:justify-between md:items-center md:px-10 sm:flex-col
+        sm:justify-center sm:items-center sm:gap-5 sm:px-5 sm:py-7 xs:flex-col xs:justify-center xs:items-center xs:gap-5 xs:px-5 xs:py-6 '
+        >
+          <Link href='' onClick={handleRefresh}>
+            <Image
+              src={'/logo.png'}
+              alt='aseda logo'
+              width={200}
+              height={200}
+              quality={100}
+              className='lg:w-[200px] md:w-[170px] sm:w-[170px] xs:w-[170px] '
+            />
+          </Link>
+
+          <nav className='font-medium text-base flex flex-row justify-center items-center gap-4 capitalize'>
+            <ScrollLink
+              activeClass='active'
+              to='home'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              home{' '}
+            </ScrollLink>
+            <ScrollLink
+              activeClass='active'
+              to='about'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              about{' '}
+            </ScrollLink>
+            <ScrollLink
+              activeClass='active'
+              to='services'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              our services{' '}
+            </ScrollLink>
+            <ScrollLink
+              activeClass='active'
+              to='contact'
+              spy={true}
+              smooth={true}
+              offset={-70} // Change this value to adjust the offset if needed
+              duration={500}
+            >
+              contact{' '}
+            </ScrollLink>
+          </nav>
+
+          <nav className='flex flex-row justify-center items-center gap-4'>
+            <Link href={'www.facebook.com/asedasecure'} target='_blank'>
+              <FaFacebook size={30} />
+            </Link>
+            <Link
+              href={'https://www.instagram.com/asedasecure/'}
+              target='_blank'
+            >
+              {' '}
+              <FaInstagram size={30} />
+            </Link>
+            <Link href={'www.linkedin.com/asedasecure'} target='_blank'>
+              {' '}
+              <FaLinkedin size={30} />
+            </Link>
+          </nav>
+        </footer>
       </main>
     </>
   )
